@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
+<title>Hautarzt-Finder Passau</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.css" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f172a; --panel:#1e293b; --panel2:#273449; --line:#334155;
+    --fg:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --accent2:#0ea5e9;
+    --ok:#22c55e; --warn:#f59e0b; --bad:#ef4444; --radius:10px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--fg); overflow:hidden;
+    font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-text-size-adjust:100%;
+  }
+  button,input,select,textarea{font:inherit;color:inherit}
+  a{color:var(--accent)}
+
+  /* ---------- login gate ---------- */
+  #gate{
+    position:fixed; inset:0; z-index:100; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(1200px 600px at 50% 0%,#1e293b,#0f172a); padding:24px;
+  }
+  #gate.hidden{display:none}
+  #gate form{
+    width:100%; max-width:340px; background:var(--panel); border:1px solid var(--line);
+    border-radius:16px; padding:26px 22px; box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  #gate h1{margin:0 0 4px; font-size:19px}
+  #gate p{margin:0 0 18px; color:var(--muted); font-size:13px}
+  #gate input{
+    width:100%; padding:11px 12px; border-radius:9px; border:1px solid var(--line);
+    background:#0b1220; margin-bottom:10px;
+  }
+  #gate button{
+    width:100%; padding:11px; border:0; border-radius:9px; background:var(--accent2);
+    color:#04202e; font-weight:700; cursor:pointer;
+  }
+  #gateErr{color:var(--bad); font-size:13px; min-height:18px; margin-top:8px}
+
+  /* ---------- shell ---------- */
+  #app{display:none; height:100dvh; flex-direction:column}
+  #app.ready{display:flex}
+
+  header{
+    display:flex; align-items:center; gap:10px; padding:8px 12px;
+    background:var(--panel); border-bottom:1px solid var(--line); flex:0 0 auto; flex-wrap:wrap;
+  }
+  header h1{margin:0; font-size:15px; font-weight:700; white-space:nowrap}
+  header h1 span{color:var(--muted); font-weight:400}
+  #stats{color:var(--muted); font-size:12.5px; white-space:nowrap}
+  .grow{flex:1 1 auto}
+  .hbtn{
+    background:var(--panel2); border:1px solid var(--line); border-radius:8px;
+    padding:6px 10px; cursor:pointer; white-space:nowrap;
+  }
+  .hbtn:hover{border-color:var(--accent)}
+  .hbtn.on{background:var(--accent2); border-color:var(--accent2); color:#04202e; font-weight:600}
+
+  main{flex:1 1 auto; min-height:0; display:grid; grid-template-columns:minmax(460px,50%) 1fr}
+  main.listCollapsed{grid-template-columns:0 1fr}
+  main.listCollapsed #listPane{display:none}
+
+  #mapPane{position:relative; min-height:0}
+  #map{position:absolute; inset:0}
+  .mapLegend{
+    position:absolute; left:10px; bottom:10px; z-index:2; background:rgba(15,23,42,.88);
+    border:1px solid var(--line); border-radius:9px; padding:8px 10px; font-size:12px;
+    display:flex; flex-direction:column; gap:4px; backdrop-filter:blur(4px);
+  }
+  .mapLegend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+  #listPane{display:flex; flex-direction:column; min-height:0; border-right:1px solid var(--line); background:var(--bg)}
+
+  /* ---------- filters ---------- */
+  #filters{padding:9px 12px; background:var(--panel); border-bottom:1px solid var(--line); flex:0 0 auto}
+  #filterGrid{display:none; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; margin-top:9px}
+  #filterGrid.open{display:grid}
+  .f label{display:block; font-size:11px; color:var(--muted); margin-bottom:3px; text-transform:uppercase; letter-spacing:.04em}
+  .f select,.f input[type=search],.f input[type=range]{
+    width:100%; padding:7px 8px; border-radius:8px; border:1px solid var(--line); background:#0b1220;
+  }
+  .f input[type=range]{padding:0; height:26px}
+  #searchRow{display:flex; gap:8px; align-items:center}
+  #search{flex:1 1 auto; padding:8px 10px; border-radius:8px; border:1px solid var(--line); background:#0b1220}
+  #kmVal{color:var(--accent); font-variant-numeric:tabular-nums}
+  #resetF{font-size:12px; background:none; border:0; color:var(--muted); cursor:pointer; text-decoration:underline; padding:0}
+
+  /* ---------- table ---------- */
+  #tableWrap{flex:1 1 auto; overflow:auto; -webkit-overflow-scrolling:touch}
+  table{width:100%; border-collapse:collapse; table-layout:fixed}
+  tbody td,thead th{overflow-wrap:anywhere}
+  thead th{
+    position:sticky; top:0; z-index:3; background:var(--panel2); text-align:left;
+    padding:8px 6px; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--muted); border-bottom:1px solid var(--line); cursor:pointer; white-space:nowrap; user-select:none;
+  }
+  thead th:hover{color:var(--fg)}
+  thead th .arr{color:var(--accent); font-size:10px}
+  tbody tr{border-bottom:1px solid #1e293b}
+  tbody tr.sel{background:#12283d}
+  tbody tr.called .docname{opacity:.62}
+  tbody td{padding:8px 6px; vertical-align:top}
+  .docname{font-weight:600; cursor:pointer; line-height:1.3}
+  .docname:hover{color:var(--accent)}
+  .sub{color:var(--muted); font-size:12px; margin-top:2px; line-height:1.35}
+  .badge{display:inline-block; padding:1px 6px; border-radius:20px; font-size:10.5px; border:1px solid var(--line); color:var(--muted); margin-right:4px}
+  .badge.at{border-color:#b45309; color:#fbbf24}
+  .badge.privat{border-color:#7c3aed; color:#c4b5fd}
+  .km{font-variant-numeric:tabular-nums; white-space:nowrap; color:var(--muted)}
+  .rating{white-space:nowrap; font-variant-numeric:tabular-nums}
+  .rating b{font-size:14px}
+  .rating small{color:var(--muted)}
+  .r-hi{color:#4ade80} .r-mid{color:#fbbf24} .r-lo{color:#f87171} .r-none{color:var(--muted)}
+  .tel{font-variant-numeric:tabular-nums; font-size:12.5px}
+  .chk{width:18px; height:18px; accent-color:var(--ok); cursor:pointer}
+  .cmt{
+    width:100%; min-width:0; min-height:52px; resize:vertical; padding:6px 7px;
+    border-radius:7px; border:1px solid var(--line); background:#0b1220; font-size:12.5px;
+  }
+  .cmt:focus{border-color:var(--accent); outline:none}
+  .stsel{width:100%; min-width:0; padding:5px 4px; border-radius:7px; border:1px solid var(--line); background:#0b1220; font-size:12px}
+  .stsel[data-v="termin"]{border-color:var(--ok); color:#86efac}
+  .stsel[data-v="warteliste"]{border-color:var(--warn); color:#fcd34d}
+  .stsel[data-v="voll"],.stsel[data-v="abgelehnt"]{border-color:var(--bad); color:#fca5a5}
+  .note{color:#fbbf24; font-size:11.5px; margin-top:4px; line-height:1.35}
+  #empty{padding:30px 16px; text-align:center; color:var(--muted)}
+  @media (min-width:861px){
+    td.c-called{text-align:center}
+    td.c-called .sub{display:none}
+    td.c-meta{white-space:nowrap}
+  }
+  #saveHint{
+    position:fixed; right:14px; bottom:14px; z-index:50; background:var(--ok); color:#052e16;
+    padding:7px 13px; border-radius:20px; font-size:12.5px; font-weight:600; opacity:0;
+    transition:opacity .2s; pointer-events:none;
+  }
+  #saveHint.show{opacity:1}
+  #saveHint.err{background:var(--bad); color:#fff}
+
+  .mapboxgl-popup-content{background:var(--panel); color:var(--fg); border-radius:10px; padding:11px 13px; font:13px/1.45 system-ui,sans-serif}
+  .mapboxgl-popup-content h3{margin:0 0 5px; font-size:13.5px}
+  .mapboxgl-popup-tip{border-top-color:var(--panel)!important; border-bottom-color:var(--panel)!important}
+  .mapboxgl-popup-close-button{color:var(--muted); font-size:17px}
+  .pin{width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid rgba(0,0,0,.45);cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,.5)}
+  .pin.home{border-radius:50%;transform:none;width:26px;height:26px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:13px}
+
+  /* ---------- mobile ---------- */
+  @media (max-width:860px){
+    main{grid-template-columns:1fr; grid-template-rows:minmax(0,42dvh) minmax(0,1fr)}
+    #mapPane{grid-row:1}
+    #listPane{grid-row:2}
+    main.listCollapsed{grid-template-rows:1fr 0}
+    main.mapCollapsed{grid-template-rows:0 1fr}
+    main.mapCollapsed #mapPane{display:none}
+    #listPane{border-right:0; border-top:1px solid var(--line)}
+    header{gap:8px; padding:7px 10px}
+    header h1{font-size:14px; flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis}
+    header .grow{display:none}
+    #stats{order:3; flex:1 1 100%; font-size:11.5px; white-space:normal}
+    header h1 span{display:none}
+    thead,colgroup{display:none}
+    table{table-layout:auto}
+    tbody tr{display:block; padding:10px 12px; border-bottom:1px solid var(--line)}
+    tbody td{display:block; padding:0; border:0}
+    tbody td[data-l]::before{content:attr(data-l); display:block; font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:8px 0 3px}
+    td.m-inline{display:inline-block!important; margin:6px 16px 0 0; vertical-align:top}
+    td.m-inline[data-l]::before{display:inline-block; margin:0 5px 0 0}
+    td.m-inline .rating{display:inline}
+    td.c-called{display:flex!important; align-items:center; gap:8px; margin-top:9px}
+    td.c-called::before{margin:0!important}
+  }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <form id="gateForm" autocomplete="on">
+    <h1>🩺 Hautarzt-Finder Passau</h1>
+    <p>Bitte Passwort eingeben. Es wird danach dauerhaft im Browser gespeichert.</p>
+    <input type="password" id="pw" placeholder="Passwort" autocomplete="current-password" required>
+    <button type="submit">Anmelden</button>
+    <div id="gateErr"></div>
+  </form>
+</div>
+
+<div id="app">
+  <header>
+    <h1>🩺 Hautarzt-Finder <span>Passau &amp; Umgebung</span></h1>
+    <span id="stats"></span>
+    <span class="grow"></span>
+    <button class="hbtn" id="toggleMap" title="Karte ein-/ausblenden">🗺️</button>
+    <button class="hbtn" id="toggleList" title="Liste ein-/ausblenden">📋</button>
+  </header>
+
+  <main id="main">
+    <section id="listPane">
+      <div id="filters">
+        <div id="searchRow">
+          <input type="search" id="search" placeholder="Suchen: Name, Ort, Adresse, Kommentar …">
+          <button class="hbtn" id="toggleFilters">Filter ▾</button>
+        </div>
+        <div id="filterGrid">
+          <div class="f"><label>Sortieren nach</label>
+            <select id="sortBy">
+              <option value="km">Entfernung</option>
+              <option value="rating">Bewertung</option>
+              <option value="rating_count">Anzahl Bewertungen</option>
+              <option value="name">Name</option>
+              <option value="city">Ort</option>
+              <option value="called">Anruf-Status</option>
+            </select>
+          </div>
+          <div class="f"><label>Richtung</label>
+            <select id="sortDir"><option value="asc">aufsteigend</option><option value="desc">absteigend</option></select>
+          </div>
+          <div class="f"><label>Max. Entfernung: <span id="kmVal">100 km</span></label>
+            <input type="range" id="maxKm" min="5" max="100" step="5" value="100">
+          </div>
+          <div class="f"><label>Land</label>
+            <select id="fCountry"><option value="">alle</option><option value="DE">Deutschland</option><option value="AT">Österreich</option></select>
+          </div>
+          <div class="f"><label>Min. Bewertung</label>
+            <select id="fRating">
+              <option value="">egal</option><option value="3">ab 3,0 ★</option>
+              <option value="3.5">ab 3,5 ★</option><option value="4">ab 4,0 ★</option><option value="4.5">ab 4,5 ★</option>
+              <option value="rated">nur bewertete</option>
+            </select>
+          </div>
+          <div class="f"><label>Abrechnung</label>
+            <select id="fBilling"><option value="">alle</option><option value="kasse">Kasse (vermutlich)</option><option value="privat">Privat / Wahlarzt</option></select>
+          </div>
+          <div class="f"><label>Anruf-Status</label>
+            <select id="fCalled"><option value="">alle</option><option value="0">noch nicht angerufen</option><option value="1">schon angerufen</option></select>
+          </div>
+          <div class="f"><label>Ergebnis</label>
+            <select id="fStatus">
+              <option value="">alle</option><option value="termin">Termin bekommen</option>
+              <option value="warteliste">Warteliste</option><option value="voll">Nimmt niemanden</option>
+              <option value="nicht_erreicht">Nicht erreicht</option><option value="rueckruf">Rückruf zugesagt</option>
+              <option value="abgelehnt">Abgelehnt</option><option value="none">ohne Ergebnis</option>
+            </select>
+          </div>
+          <div class="f"><label>&nbsp;</label><button id="resetF" type="button">Filter zurücksetzen</button></div>
+        </div>
+      </div>
+
+      <div id="tableWrap">
+        <table id="tbl">
+          <colgroup>
+            <col style="width:30%"><col style="width:8%"><col style="width:11%">
+            <col style="width:14%"><col style="width:7%"><col style="width:14%"><col style="width:16%">
+          </colgroup>
+          <thead><tr>
+            <th data-s="name">Praxis</th>
+            <th data-s="km">km</th>
+            <th data-s="rating" title="Google-Bewertung">Bew.</th>
+            <th data-s="phone">Tel.</th>
+            <th data-s="called" title="Schon angerufen?">✆</th>
+            <th data-s="status">Ergebnis</th>
+            <th>Kommentar</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <div id="empty" hidden>Keine Treffer für diese Filter.</div>
+      </div>
+    </section>
+
+    <section id="mapPane">
+      <div id="map"></div>
+      <div class="mapLegend">
+        <div><i style="background:#38bdf8"></i>Zuhause</div>
+        <div><i style="background:#f87171"></i>offen</div>
+        <div><i style="background:#94a3b8"></i>angerufen</div>
+        <div><i style="background:#22c55e"></i>Termin / Warteliste</div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="saveHint"></div>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
