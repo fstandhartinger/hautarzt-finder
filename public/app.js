@@ -53,6 +53,26 @@ function toast(msg, isErr) {
 
 // ------------------------------------------------------------------ login
 
+// The gate uses a masked text input rather than type=password, so that Chrome's
+// password manager — which shares saved logins across every *.mintapis.com app —
+// never offers another Sandy app's credentials here. If a browser cannot mask a
+// text input, masking wins and we fall back to a real password field.
+const pwInput = $('#pw');
+const canMask = !!(window.CSS && CSS.supports &&
+  (CSS.supports('-webkit-text-security', 'disc') || CSS.supports('text-security', 'disc')));
+if (!canMask) {
+  pwInput.type = 'password';
+  pwInput.classList.remove('masked');
+}
+
+$('#pwReveal').addEventListener('click', () => {
+  const hidden = pwInput.type === 'password' || pwInput.classList.contains('masked');
+  if (canMask) pwInput.classList.toggle('masked', !hidden);
+  else pwInput.type = hidden ? 'text' : 'password';
+  $('#pwReveal').textContent = hidden ? '🙈' : '👁';
+  pwInput.focus();
+});
+
 $('#gateForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   $('#gateErr').textContent = '';
@@ -128,12 +148,21 @@ function initMap() {
   }
 }
 
+// A Google `cid` addresses the exact place (reviews included); everything else
+// falls back to a plain Maps search for the name and address.
+function mapsUrl(d) {
+  return d.cid
+    ? `https://www.google.com/maps?cid=${encodeURIComponent(d.cid)}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${d.name}, ${d.address}`)}`;
+}
+
 function popupHTML(d) {
   const esc = (s) => String(s || '').replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]));
   const tel = d.phone ? `<div>📞 <a href="tel:${esc(d.phone.replace(/\s/g, ''))}">${esc(d.phone)}</a></div>` : '';
   const web = d.website ? `<div>🌐 <a href="${esc(d.website)}" target="_blank" rel="noopener">Website</a></div>` : '';
   const rat = d.rating != null ? `<div>⭐ ${d.rating.toFixed(1)} (${d.rating_count} Bew.)</div>` : '<div>⭐ keine Bewertung</div>';
-  return `<h3>${esc(d.name)}</h3><div>${esc(d.address)}</div><div>📍 ${d.km.toFixed(1)} km</div>${rat}${tel}${web}`;
+  const addr = `<div><a href="${esc(mapsUrl(d))}" target="_blank" rel="noopener">${esc(d.address)}</a></div>`;
+  return `<h3>${esc(d.name)}</h3>${addr}<div>📍 ${d.km.toFixed(1)} km</div>${rat}${tel}${web}`;
 }
 
 function refreshMarker(d) {
@@ -244,7 +273,17 @@ function render() {
     nm.addEventListener('click', () => selectDoctor(d.id, true));
     tdName.appendChild(nm);
     const sub = el('div', 'sub');
-    sub.textContent = d.address;
+    const addrLink = document.createElement('a');
+    addrLink.className = 'addr';
+    addrLink.href = mapsUrl(d);
+    addrLink.target = '_blank';
+    addrLink.rel = 'noopener';
+    addrLink.title = 'In Google Maps öffnen';
+    addrLink.textContent = d.address + ' ';
+    const pin = el('span', 'pinIcon');
+    pin.textContent = '📍';
+    addrLink.appendChild(pin);
+    sub.appendChild(addrLink);
     tdName.appendChild(sub);
     const badges = el('div', 'sub');
     if (d.country === 'AT') { const b = el('span', 'badge at'); b.textContent = '🇦🇹 Österreich'; badges.appendChild(b); }

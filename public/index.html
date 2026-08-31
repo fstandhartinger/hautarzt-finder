@@ -35,11 +35,19 @@
   }
   #gate h1{margin:0 0 4px; font-size:19px}
   #gate p{margin:0 0 18px; color:var(--muted); font-size:13px}
+  #pwRow{display:flex; gap:8px; margin-bottom:10px}
   #gate input{
     width:100%; padding:11px 12px; border-radius:9px; border:1px solid var(--line);
-    background:#0b1220; margin-bottom:10px;
+    background:#0b1220;
   }
-  #gate button{
+  /* Masking without type=password — see the comment on the gate markup. */
+  #pw.masked{-webkit-text-security:disc; text-security:disc; letter-spacing:.12em}
+  #pwReveal{
+    flex:0 0 auto; width:44px; padding:0; border-radius:9px; border:1px solid var(--line);
+    background:var(--panel2); cursor:pointer; font-size:15px;
+  }
+  #pwReveal:hover{border-color:var(--accent)}
+  #gate button[type=submit]{
     width:100%; padding:11px; border:0; border-radius:9px; background:var(--accent2);
     color:#04202e; font-weight:700; cursor:pointer;
   }
@@ -113,6 +121,9 @@
   .docname{font-weight:600; cursor:pointer; line-height:1.3}
   .docname:hover{color:var(--accent)}
   .sub{color:var(--muted); font-size:12px; margin-top:2px; line-height:1.35}
+  a.addr{color:var(--muted); text-decoration:none; border-bottom:1px dotted #475569}
+  a.addr:hover{color:var(--accent); border-bottom-color:var(--accent)}
+  .pinIcon{font-size:10px; opacity:.75; white-space:nowrap}
   .badge{display:inline-block; padding:1px 6px; border-radius:20px; font-size:10.5px; border:1px solid var(--line); color:var(--muted); margin-right:4px}
   .badge.at{border-color:#b45309; color:#fbbf24}
   .badge.privat{border-color:#7c3aed; color:#c4b5fd}
@@ -185,10 +196,22 @@
 <body>
 
 <div id="gate">
-  <form id="gateForm" autocomplete="on">
+  <form id="gateForm" autocomplete="off" novalidate>
     <h1>🩺 Hautarzt-Finder Passau</h1>
     <p>Bitte Passwort eingeben. Es wird danach dauerhaft im Browser gespeichert.</p>
-    <input type="password" id="pw" placeholder="Passwort" autocomplete="current-password" required>
+    <!-- Deliberately NOT <input type="password">. Every Sandy PaaS app lives under
+         mintapis.com, so Chrome's password manager treats a login saved for one app
+         as a match for all the others and offers it here. This gate has no account
+         behind it, only a shared secret, so it stays out of the password manager
+         entirely: a text input masked via -webkit-text-security. app.js falls back
+         to type=password if a browser cannot mask it. -->
+    <div id="pwRow">
+      <input id="pw" type="text" class="masked" placeholder="Passwort" aria-label="Passwort"
+             name="hautarzt-access-code" autocomplete="off" autocapitalize="off"
+             autocorrect="off" spellcheck="false" data-form-type="other"
+             data-1p-ignore data-lpignore="true" data-bwignore>
+      <button type="button" id="pwReveal" aria-label="Passwort anzeigen" title="Passwort anzeigen">👁</button>
+    </div>
     <button type="submit">Anmelden</button>
     <div id="gateErr"></div>
   </form>
