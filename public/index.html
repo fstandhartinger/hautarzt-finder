@@ -67,6 +67,8 @@
   main{flex:1 1 auto; min-height:0; display:grid; grid-template-columns:minmax(460px,50%) 1fr}
   main.listCollapsed{grid-template-columns:0 1fr}
   main.listCollapsed #listPane{display:none}
+  main.mapCollapsed{grid-template-columns:1fr 0}
+  main.mapCollapsed #mapPane{display:none}
 
   #mapPane{position:relative; min-height:0}
   #map{position:absolute; inset:0}
@@ -256,7 +258,7 @@
       <div id="tableWrap">
         <table id="tbl">
           <colgroup>
-            <col style="width:26%"><col style="width:8%"><col style="width:12%">
+            <col style="width:25%"><col style="width:9%"><col style="width:12%">
             <col style="width:14%"><col style="width:6%"><col style="width:14%"><col style="width:20%">
           </colgroup>
           <thead><tr>
