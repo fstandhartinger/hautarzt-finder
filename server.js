@@ -150,6 +150,7 @@ app.get('/api/config', requireAuth, (_req, res) => {
 
 app.get('/api/doctors', requireAuth, async (_req, res) => {
   try {
+    await ready;
     const { rows } = await pool.query(`
       SELECT d.id, d.name, d.also, d.address, d.zip, d.city, d.country, d.lat, d.lon,
              d.phone, d.website, d.rating, d.rating_count, d.billing, d.note, d.km, d.source,
@@ -219,7 +220,11 @@ app.use(express.static(path.join(__dirname, 'public'), {
 
 // ---------------------------------------------------------------- boot
 
-(async () => {
+// Bind the port first: the platform healthcheck starts probing immediately, and
+// migrate+seed takes long enough that a later listen() reads as a dead container.
+app.listen(PORT, '0.0.0.0', () => console.log(`hautarzt-finder listening on ${PORT}`));
+
+const ready = (async () => {
   for (let i = 1; i <= 10; i++) {
     try { await migrate(); break; }
     catch (e) {
@@ -229,5 +234,4 @@ app.use(express.static(path.join(__dirname, 'public'), {
     }
   }
   try { await seed(); } catch (e) { console.error('seed failed (continuing):', e.message); }
-  app.listen(PORT, '0.0.0.0', () => console.log(`hautarzt-finder listening on ${PORT}`));
 })();
