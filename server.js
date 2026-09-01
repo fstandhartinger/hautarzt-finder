@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS doctors (
   km            numeric(5,1) NOT NULL,
   source        text,
   cid           text,
+  hours         jsonb,
   updated_at    timestamptz NOT NULL DEFAULT now()
 );
 
@@ -84,6 +85,8 @@ async function migrate() {
   await pool.query(`ALTER TABLE doctor_state ADD COLUMN IF NOT EXISTS status text NOT NULL DEFAULT ''`);
   // `cid` (the Google place id behind the maps link) was added after the first deploy.
   await pool.query(`ALTER TABLE doctors ADD COLUMN IF NOT EXISTS cid text`);
+  // Weekly opening hours, added later still; null means "not known".
+  await pool.query(`ALTER TABLE doctors ADD COLUMN IF NOT EXISTS hours jsonb`);
 }
 
 async function seed() {
@@ -98,18 +101,19 @@ async function seed() {
     // Upsert the reference data but never touch the user's own call state.
     await pool.query(
       `INSERT INTO doctors (id,name,also,address,zip,city,country,lat,lon,phone,website,
-                            rating,rating_count,billing,note,km,source,cid,updated_at)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,now())
+                            rating,rating_count,billing,note,km,source,cid,hours,updated_at)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,now())
        ON CONFLICT (id) DO UPDATE SET
          name=EXCLUDED.name, also=EXCLUDED.also, address=EXCLUDED.address, zip=EXCLUDED.zip,
          city=EXCLUDED.city, country=EXCLUDED.country, lat=EXCLUDED.lat, lon=EXCLUDED.lon,
          phone=EXCLUDED.phone, website=EXCLUDED.website, rating=EXCLUDED.rating,
          rating_count=EXCLUDED.rating_count, billing=EXCLUDED.billing, note=EXCLUDED.note,
-         km=EXCLUDED.km, source=EXCLUDED.source, cid=EXCLUDED.cid, updated_at=now()`,
+         km=EXCLUDED.km, source=EXCLUDED.source, cid=EXCLUDED.cid,
+         hours=EXCLUDED.hours, updated_at=now()`,
       [id, d.name, d.also || [], d.address, d.zip || null, d.city || null, d.country,
        d.lat, d.lon, d.phone || null, d.website || null, d.rating ?? null,
        d.rating_count ?? null, d.billing || null, d.note || null, d.km, d.source || null,
-       d.cid || null]
+       d.cid || null, d.hours ? JSON.stringify(d.hours) : null]
     );
     await pool.query(
       `INSERT INTO doctor_state (doctor_id) VALUES ($1) ON CONFLICT (doctor_id) DO NOTHING`, [id]);
@@ -157,7 +161,7 @@ app.get('/api/doctors', requireAuth, async (_req, res) => {
     await ready;
     const { rows } = await pool.query(`
       SELECT d.id, d.name, d.also, d.address, d.zip, d.city, d.country, d.lat, d.lon,
-             d.phone, d.website, d.rating, d.rating_count, d.billing, d.note, d.km, d.source, d.cid,
+             d.phone, d.website, d.rating, d.rating_count, d.billing, d.note, d.km, d.source, d.cid, d.hours,
              COALESCE(s.called,false) AS called,
              COALESCE(s.comment,'')  AS comment,
              COALESCE(s.status,'')   AS status,

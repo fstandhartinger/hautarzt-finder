@@ -109,6 +109,84 @@ async function boot() {
   render();
 }
 
+// ------------------------------------------------------------------ opening hours
+
+const DAY_KEYS = ['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'];
+const DAY_LABEL = { mo: 'Mo', tu: 'Di', we: 'Mi', th: 'Do', fr: 'Fr', sa: 'Sa', su: 'So' };
+const WEEKDAY_TO_KEY = { Mon: 'mo', Tue: 'tu', Wed: 'we', Thu: 'th', Fri: 'fr', Sat: 'sa', Sun: 'su' };
+
+const toMin = (hhmm) => {
+  const [h, m] = hhmm.split(':').map(Number);
+  return h * 60 + m;
+};
+
+// Practices are all in one timezone; read the clock there rather than on the device,
+// so the filter stays correct when the phone is roaming or set to another zone.
+function berlinNow() {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Berlin', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false,
+  }).formatToParts(new Date());
+  const get = (t) => (parts.find((p) => p.type === t) || {}).value;
+  return {
+    day: WEEKDAY_TO_KEY[get('weekday')] || 'mo',
+    minutes: (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10),
+  };
+}
+
+let NOW = berlinNow();
+
+function spansOf(d, dayKey) {
+  const w = d.hours && d.hours.week;
+  return (w && w[dayKey]) || [];
+}
+
+function hasHours(d) {
+  return !!(d.hours && d.hours.week);
+}
+
+/** -> {state:'open'|'closed'|'unknown', until?, nextDay?, nextFrom?, nextTo?} */
+function openState(d, now = NOW) {
+  if (!hasHours(d)) return { state: 'unknown' };
+  const today = spansOf(d, now.day);
+  for (const [a, b] of today) {
+    if (now.minutes >= toMin(a) && now.minutes < toMin(b)) {
+      const later = today.find(([x]) => toMin(x) > toMin(b));
+      return { state: 'open', until: b, thenFrom: later && later[0] };
+    }
+  }
+  const start = DAY_KEYS.indexOf(now.day);
+  for (let i = 0; i < 8; i++) {
+    const key = DAY_KEYS[(start + i) % 7];
+    for (const [a, b] of spansOf(d, key)) {
+      if (i > 0 || toMin(a) > now.minutes) {
+        return {
+          state: 'closed',
+          nextDay: i === 0 ? 'heute' : i === 1 ? 'morgen' : DAY_LABEL[key],
+          nextFrom: a, nextTo: b,
+        };
+      }
+    }
+  }
+  return { state: 'closed' };   // has hours on record but never opens again this week
+}
+
+function todayLabel(d, now = NOW) {
+  if (!hasHours(d)) return null;
+  const s = spansOf(d, now.day);
+  return s.length ? s.map(([a, b]) => `${a}–${b}`).join(', ') : 'geschlossen';
+}
+
+function weekLabel(d) {
+  if (!hasHours(d)) return '';
+  const lines = DAY_KEYS.map((k) => {
+    const s = spansOf(d, k);
+    return `${DAY_LABEL[k]}  ${s.length ? s.map(([a, b]) => `${a}–${b}`).join(', ') : '—'}`;
+  });
+  const src = d.hours.source ? `\nQuelle: ${d.hours.source}` : '';
+  const note = d.hours.note ? `\n${d.hours.note}` : '';
+  return lines.join('\n') + note + src;
+}
+
 // ------------------------------------------------------------------ map
 
 function pinColor(d) {
@@ -137,7 +215,6 @@ function initMap() {
 
   for (const d of DOCS) {
     const node = el('div', 'pin');
-    node.style.background = pinColor(d);
     node.title = d.name;
     node.addEventListener('click', () => selectDoctor(d.id, false));
     const m = new mapboxgl.Marker({ element: node })
@@ -145,6 +222,7 @@ function initMap() {
       .setPopup(new mapboxgl.Popup({ offset: 18, maxWidth: '280px' }).setHTML(popupHTML(d)))
       .addTo(map);
     markers.set(d.id, { marker: m, node });
+    paintMarker(node, d);
   }
 }
 
@@ -162,13 +240,24 @@ function popupHTML(d) {
   const web = d.website ? `<div>🌐 <a href="${esc(d.website)}" target="_blank" rel="noopener">Website</a></div>` : '';
   const rat = d.rating != null ? `<div>⭐ ${d.rating.toFixed(1)} (${d.rating_count} Bew.)</div>` : '<div>⭐ keine Bewertung</div>';
   const addr = `<div><a href="${esc(mapsUrl(d))}" target="_blank" rel="noopener">${esc(d.address)}</a></div>`;
-  return `<h3>${esc(d.name)}</h3>${addr}<div>📍 ${d.km.toFixed(1)} km</div>${rat}${tel}${web}`;
+  const st = openState(d);
+  const hrs = st.state === 'unknown'
+    ? '<div>🕐 Öffnungszeiten unbekannt</div>'
+    : `<div>🕐 <b>${st.state === 'open' ? `geöffnet bis ${esc(st.until)}` : 'geschlossen'}</b>`
+      + (todayLabel(d) && todayLabel(d) !== 'geschlossen' ? ` · heute ${esc(todayLabel(d))}` : '')
+      + '</div>';
+  return `<h3>${esc(d.name)}</h3>${addr}<div>📍 ${d.km.toFixed(1)} km</div>${rat}${hrs}${tel}${web}`;
+}
+
+function paintMarker(node, d) {
+  node.style.background = pinColor(d);
+  node.classList.toggle('openNow', openState(d).state === 'open');
 }
 
 function refreshMarker(d) {
   const m = markers.get(d.id);
   if (!m) return;
-  m.node.style.background = pinColor(d);
+  paintMarker(m.node, d);
 }
 
 // ------------------------------------------------------------------ state saving
@@ -194,7 +283,7 @@ async function saveState(id, patch) {
 // ------------------------------------------------------------------ filtering / sorting
 
 const F = {
-  q: '', maxKm: 100, country: '', rating: '', billing: '', called: '', status: '',
+  q: '', maxKm: 100, country: '', rating: '', billing: '', called: '', status: '', open: '',
   sortBy: 'km', sortDir: 'asc',
 };
 
@@ -213,6 +302,7 @@ function filtered() {
     if (F.called === '0' && d.called) return false;
     if (F.status === 'none' && d.status) return false;
     if (F.status && F.status !== 'none' && d.status !== F.status) return false;
+    if (F.open && openState(d).state !== F.open) return false;
     if (q) {
       const hay = [d.name, d.address, d.city, d.phone, d.comment, d.note, (d.also || []).join(' ')]
         .join(' ').toLowerCase();
@@ -229,6 +319,10 @@ function filtered() {
     else if (key === 'km') { av = a.km; bv = b.km; }
     else if (key === 'called') { av = a.called ? 1 : 0; bv = b.called ? 1 : 0; }
     else if (key === 'status') { av = a.status || 'zzz'; bv = b.status || 'zzz'; }
+    else if (key === 'open') {
+      const rank = { open: 0, closed: 1, unknown: 2 };
+      av = rank[openState(a).state]; bv = rank[openState(b).state];
+    }
     else if (key === 'phone') { av = a.phone || 'zzz'; bv = b.phone || 'zzz'; }
     else if (key === 'city') { av = (a.city || '').toLowerCase(); bv = (b.city || '').toLowerCase(); }
     else { av = a.name.toLowerCase(); bv = b.name.toLowerCase(); }
@@ -240,6 +334,32 @@ function filtered() {
 }
 
 // ------------------------------------------------------------------ rendering
+
+function hoursLabel(d) {
+  const st = openState(d);
+  if (st.state === 'unknown') return '◦ Zeiten unbekannt';
+  if (st.state === 'open') {
+    return `● jetzt geöffnet bis ${st.until}`
+      + (st.thenFrom ? `, dann wieder ab ${st.thenFrom}` : '');
+  }
+  if (!st.nextFrom) return '● geschlossen';
+  if (st.nextDay === 'heute') return `● geschlossen · heute noch ${st.nextFrom}–${st.nextTo}`;
+  return `● geschlossen · öffnet ${st.nextDay} ${st.nextFrom}–${st.nextTo}`;
+}
+
+function paintHours(node, d) {
+  const st = openState(d);
+  node.className = 'oh oh-' + st.state;
+  node.textContent = '';
+  const line = el('div');
+  line.textContent = hoursLabel(d);
+  node.appendChild(line);
+  if (d.hours && d.hours.note) {
+    const n = el('div', 'ohNote');
+    n.textContent = '↳ ' + d.hours.note;
+    node.appendChild(n);
+  }
+}
 
 function ratingCell(d) {
   const c = el('div', 'rating');
@@ -295,6 +415,12 @@ function render() {
       badges.appendChild(a);
     }
     if (badges.children.length) tdName.appendChild(badges);
+
+    const oh = el('div', 'oh');
+    oh.dataset.docId = d.id;
+    if (hasHours(d)) oh.title = weekLabel(d);
+    paintHours(oh, d);
+    tdName.appendChild(oh);
     if (d.note) { const n = el('div', 'note'); n.textContent = 'ℹ ' + d.note; tdName.appendChild(n); }
     if (d.also && d.also.length) {
       const o = el('div', 'sub');
@@ -446,13 +572,14 @@ bindFilter('#fRating', 'rating');
 bindFilter('#fBilling', 'billing');
 bindFilter('#fCalled', 'called');
 bindFilter('#fStatus', 'status');
+bindFilter('#fOpen', 'open');
 bindFilter('#sortBy', 'sortBy');
 bindFilter('#sortDir', 'sortDir');
 
 $('#resetF').addEventListener('click', () => {
-  Object.assign(F, { q: '', maxKm: 100, country: '', rating: '', billing: '', called: '', status: '', sortBy: 'km', sortDir: 'asc' });
+  Object.assign(F, { q: '', maxKm: 100, country: '', rating: '', billing: '', called: '', status: '', open: '', sortBy: 'km', sortDir: 'asc' });
   $('#search').value = ''; $('#maxKm').value = 100; $('#kmVal').textContent = '100 km';
-  ['#fCountry', '#fRating', '#fBilling', '#fCalled', '#fStatus'].forEach((s) => { $(s).value = ''; });
+  ['#fCountry', '#fRating', '#fBilling', '#fCalled', '#fStatus', '#fOpen'].forEach((s) => { $(s).value = ''; });
   $('#sortBy').value = 'km'; $('#sortDir').value = 'asc';
   render();
 });
@@ -485,13 +612,31 @@ document.querySelectorAll('thead th[data-s]').forEach((th) => {
     const s = th.dataset.s;
     if (F.sortBy === s) F.sortDir = F.sortDir === 'asc' ? 'desc' : 'asc';
     else { F.sortBy = s; F.sortDir = (s === 'rating' || s === 'rating_count') ? 'desc' : 'asc'; }
-    $('#sortBy').value = ['km', 'rating', 'rating_count', 'name', 'city', 'called'].includes(F.sortBy) ? F.sortBy : 'km';
+    $('#sortBy').value = ['km', 'rating', 'rating_count', 'name', 'city', 'called', 'open'].includes(F.sortBy) ? F.sortBy : 'km';
     $('#sortDir').value = F.sortDir;
     render();
   });
 });
 
 // ------------------------------------------------------------------ start
+
+// The open/closed labels go stale on their own; refresh them once a minute.
+setInterval(() => {
+  const before = NOW;
+  NOW = berlinNow();
+  if (before.day === NOW.day && before.minutes === NOW.minutes) return;
+  const editing = document.activeElement;
+  const busy = editing && editing.closest && editing.closest('#tbody');
+  if (F.open || F.sortBy === 'open') {
+    if (!busy) render();          // membership itself changed; a full redraw is needed
+    return;
+  }
+  document.querySelectorAll('#tbody .oh').forEach((node) => {
+    const d = DOCS.find((x) => x.id === node.dataset.docId);
+    if (d) paintHours(node, d);
+  });
+  for (const d of DOCS) refreshMarker(d);
+}, 30000);
 
 $('#toggleList').classList.add('on');
 $('#toggleMap').classList.add('on');

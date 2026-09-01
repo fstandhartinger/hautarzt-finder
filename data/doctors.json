@@ -16,7 +16,8 @@
   "country": "DE",
   "billing": "unbekannt",
   "zip": "94032",
-  "city": "Passau"
+  "city": "Passau",
+  "hours": null
  },
  {
   "name": "Hautarztpraxis Dr. med. univ. Patrick Schauer & Kollegen",
@@ -35,7 +36,54 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94032",
-  "city": "Passau"
+  "city": "Passau",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "15:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.hautarzt-passau.com/",
+   "note": null
+  }
  },
  {
   "name": "Hautarzt Privat-Praxis Dr. med. Claus Gruss",
@@ -54,7 +102,8 @@
   "billing": "Privat/Wahlarzt",
   "note": null,
   "zip": "94032",
-  "city": "Passau"
+  "city": "Passau",
+  "hours": null
  },
  {
   "name": "Privatärztliche Praxis für Hauterkrankungen",
@@ -73,7 +122,8 @@
   "billing": "Privat/Wahlarzt",
   "note": null,
   "zip": "94032",
-  "city": "Passau"
+  "city": "Passau",
+  "hours": null
  },
  {
   "name": "Hautzentrum Passau - Hautärztin Stephanie Dessoi & Kollegen",
@@ -92,7 +142,58 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94032",
-  "city": "Passau"
+  "city": "Passau",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "07:30",
+      "12:30"
+     ],
+     [
+      "13:30",
+      "17:00"
+     ]
+    ],
+    "tu": [
+     [
+      "07:30",
+      "12:30"
+     ],
+     [
+      "13:30",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "07:30",
+      "12:30"
+     ]
+    ],
+    "th": [
+     [
+      "07:30",
+      "12:30"
+     ],
+     [
+      "13:30",
+      "17:00"
+     ]
+    ],
+    "fr": [
+     [
+      "07:30",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.haut-zentrum-passau.de/",
+   "note": "Mi Nachmittag nur nach Vereinbarung"
+  }
  },
  {
   "name": "Hautarzt Schärding Dr. Robert Wiesinger",
@@ -111,7 +212,54 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4780",
-  "city": "Schärding"
+  "city": "Schärding",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "07:30",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "18:00"
+     ]
+    ],
+    "tu": [
+     [
+      "07:30",
+      "12:30"
+     ]
+    ],
+    "we": [
+     [
+      "07:30",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "18:00"
+     ]
+    ],
+    "th": [
+     [
+      "07:30",
+      "12:30"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.derma-rw.com/kontakt",
+   "note": null
+  }
  },
  {
   "name": "Dr. Rudolf Ostermaier – Facharzt für Dermatologie",
@@ -130,7 +278,41 @@
   "country": "AT",
   "billing": "unbekannt",
   "zip": "4780",
-  "city": "Schärding"
+  "city": "Schärding",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:30",
+      "11:30"
+     ]
+    ],
+    "tu": [
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:30",
+      "11:30"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Recherche",
+   "source_url": null,
+   "note": "Gemeinsame Ordination mit Dr. Wiesinger"
+  }
  },
  {
   "name": "Hautarzt Schärding - Frau Dr. Karina Brand",
@@ -149,7 +331,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4780",
-  "city": "Schärding"
+  "city": "Schärding",
+  "hours": null
  },
  {
   "name": "Dermatologie im FAZ",
@@ -170,7 +353,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94051",
-  "city": "Hauzenberg"
+  "city": "Hauzenberg",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "18:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "18:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "18:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "18:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "14:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.faz-hauzenberg.de/",
+   "note": "08–18 Uhr ist die zentrale Anmeldung des Fachärzte-Zentrums, nicht die Sprechzeit der Dermatologie"
+  }
  },
  {
   "name": "Hautarztpraxis Vilshofen Florian Kreuziger und Dr.med Sebastian Singer",
@@ -191,7 +413,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94474",
-  "city": "Vilshofen an der Donau"
+  "city": "Vilshofen an der Donau",
+  "hours": null
  },
  {
   "name": "Ostermaier Rudolf Dr. Arzt für Hautkrankheiten",
@@ -212,7 +435,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94060",
-  "city": "Pocking"
+  "city": "Pocking",
+  "hours": null
  },
  {
   "name": "Dr. med Martina Auth",
@@ -231,7 +455,41 @@
   "billing": "Privat/Wahlarzt",
   "note": null,
   "zip": "94065",
-  "city": "Waldkirchen"
+  "city": "Waldkirchen",
+  "hours": {
+   "week": {
+    "mo": [],
+    "tu": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "th": [
+     [
+      "10:00",
+      "15:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.dr-martina-auth.de/",
+   "note": null
+  }
  },
  {
   "name": "Dr. med. Marion-Michèle Lemmé – Hautärztin (Europa Therme)",
@@ -250,7 +508,8 @@
   "country": "DE",
   "billing": "unbekannt",
   "zip": "94072",
-  "city": "Bad Füssing"
+  "city": "Bad Füssing",
+  "hours": null
  },
  {
   "name": "Hautarztpraxis Dr. med. Tanja Friedl",
@@ -269,7 +528,74 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94078",
-  "city": "Freyung"
+  "city": "Freyung",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "07:30",
+      "08:30"
+     ],
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "tu": [
+     [
+      "07:30",
+      "08:30"
+     ],
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "07:30",
+      "08:30"
+     ],
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "th": [
+     [
+      "07:30",
+      "08:30"
+     ],
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "fr": [
+     [
+      "07:30",
+      "08:30"
+     ],
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarzt-dr-friedl.de/",
+   "note": "Mo-Fr 07:30-08:30 nur für akute Fälle"
+  }
  },
  {
   "name": "Dr. med. Birgitta Kißlinger, Dr. med. Matthias Kißlinger (Filiale des MVZ Grafenau)",
@@ -288,7 +614,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94481",
-  "city": "Grafenau"
+  "city": "Grafenau",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "15:00",
+      "18:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "19:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "19:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "14:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.faz-freyung.de/fachbereiche/grafenau-dermatologie",
+   "note": null
+  }
  },
  {
   "name": "Gemeinschaftspraxis Dr. Kißlinger",
@@ -307,7 +672,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94481",
-  "city": "Grafenau"
+  "city": "Grafenau",
+  "hours": null
  },
  {
   "name": "Dr. Eva Sollich",
@@ -326,7 +692,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84347",
-  "city": "Pfarrkirchen"
+  "city": "Pfarrkirchen",
+  "hours": null
  },
  {
   "name": "Dr. Gerald Minimair",
@@ -345,7 +712,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4910",
-  "city": "Ried im Innkreis"
+  "city": "Ried im Innkreis",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "13:30",
+      "17:30"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "th": [
+     [
+      "13:30",
+      "17:30"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarzt-minimair.at/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Helge Degreif & Dr. Behnaz Degreif-Fazeli – Dermatologisch-chirurgische Gemeinschaftsordination",
@@ -364,7 +770,41 @@
   "country": "AT",
   "billing": "unbekannt",
   "zip": "4910",
-  "city": "Ried im Innkreis"
+  "city": "Ried im Innkreis",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "tu": [
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "we": [
+     [
+      "09:00",
+      "16:00"
+     ]
+    ],
+    "th": [
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Recherche",
+   "source_url": null,
+   "note": "Fr nur nach Vereinbarung"
+  }
  },
  {
   "name": "Dr. Christoph Stelzer",
@@ -383,7 +823,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4150",
-  "city": "Rohrbach"
+  "city": "Rohrbach",
+  "hours": null
  },
  {
   "name": "Dr. med. Patricia Kühnl – Fachärztin für Haut- und Geschlechtskrankheiten",
@@ -402,7 +843,62 @@
   "country": "DE",
   "billing": "unbekannt",
   "zip": "84359",
-  "city": "Simbach am Inn"
+  "city": "Simbach am Inn",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "09:00",
+      "13:00"
+     ],
+     [
+      "14:30",
+      "17:30"
+     ]
+    ],
+    "tu": [
+     [
+      "09:00",
+      "13:00"
+     ],
+     [
+      "14:30",
+      "17:30"
+     ]
+    ],
+    "we": [
+     [
+      "09:00",
+      "13:00"
+     ],
+     [
+      "14:30",
+      "17:30"
+     ]
+    ],
+    "th": [
+     [
+      "09:00",
+      "13:00"
+     ],
+     [
+      "14:30",
+      "17:30"
+     ]
+    ],
+    "fr": [
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Recherche",
+   "source_url": null,
+   "note": null
+  }
  },
  {
   "name": "Dr. Nicole Bacher",
@@ -421,7 +917,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5280",
-  "city": "Braunau am Inn"
+  "city": "Braunau am Inn",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "14:00",
+      "18:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "th": [
+     [
+      "14:00",
+      "18:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.bacher-hautarzt.at/#praxis",
+   "note": null
+  }
  },
  {
   "name": "Hautarztpraxis Grimm",
@@ -440,7 +975,41 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94469",
-  "city": "Deggendorf"
+  "city": "Deggendorf",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "07:30",
+      "11:00"
+     ]
+    ],
+    "tu": [
+     [
+      "07:30",
+      "11:00"
+     ]
+    ],
+    "we": [],
+    "th": [
+     [
+      "07:30",
+      "11:00"
+     ]
+    ],
+    "fr": [
+     [
+      "07:30",
+      "11:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "OpenStreetMap",
+   "source_url": null,
+   "note": null
+  }
  },
  {
   "name": "Dr.med. Guindi K.",
@@ -459,7 +1028,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94469",
-  "city": "Deggendorf"
+  "city": "Deggendorf",
+  "hours": null
  },
  {
   "name": "Hautarztpraxis Dr. med. Martin Sbornik",
@@ -478,7 +1048,58 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94469",
-  "city": "Deggendorf"
+  "city": "Deggendorf",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "15:00",
+      "18:00"
+     ]
+    ],
+    "tu": [
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "15:00",
+      "18:00"
+     ]
+    ],
+    "we": [
+     [
+      "09:00",
+      "12:00"
+     ]
+    ],
+    "th": [
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "15:30",
+      "19:00"
+     ]
+    ],
+    "fr": [
+     [
+      "09:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "OpenStreetMap",
+   "source_url": null,
+   "note": null
+  }
  },
  {
   "name": "Hautarztpraxis Sonja Albert, Privatpraxis",
@@ -497,7 +1118,8 @@
   "billing": "Privat/Wahlarzt",
   "note": null,
   "zip": "94469",
-  "city": "Deggendorf"
+  "city": "Deggendorf",
+  "hours": null
  },
  {
   "name": "Alexander Boroda",
@@ -516,7 +1138,62 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94447",
-  "city": "Plattling"
+  "city": "Plattling",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "14:30",
+      "17:00"
+     ]
+    ],
+    "tu": [
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "14:30",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "14:30",
+      "17:00"
+     ]
+    ],
+    "th": [
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "14:30",
+      "17:00"
+     ]
+    ],
+    "fr": [
+     [
+      "09:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "OpenStreetMap",
+   "source_url": null,
+   "note": null
+  }
  },
  {
   "name": "Praxis Dr. Brigitte Charwat-Pessler & Dr. Bettina Lehner",
@@ -535,7 +1212,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4710",
-  "city": "Grieskirchen"
+  "city": "Grieskirchen",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "07:00",
+      "14:00"
+     ]
+    ],
+    "tu": [
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "13:00",
+      "20:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "11:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarzt-grieskirchen.at/",
+   "note": null
+  }
  },
  {
   "name": "Derma Arberland",
@@ -554,7 +1270,50 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94209",
-  "city": "Regen"
+  "city": "Regen",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "18:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "14:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "13:00"
+     ],
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "17:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://derma-arberland.de/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Gabriele Viehbeck",
@@ -573,7 +1332,40 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84307",
-  "city": "Eggenfelden"
+  "city": "Eggenfelden",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "13:30",
+      "17:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "we": [],
+    "th": [
+     [
+      "13:30",
+      "18:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.dermatologie-eggenfelden.de/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Ingrid Keplinger - Fachärztin für Haut- und Geschlechtskrankheiten",
@@ -592,7 +1384,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4070",
-  "city": "Eferding"
+  "city": "Eferding",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "13:30",
+      "17:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:30",
+      "13:00"
+     ]
+    ],
+    "we": [
+     [
+      "13:30",
+      "17:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:30",
+      "13:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:30",
+      "12:30"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "OpenStreetMap",
+   "source_url": null,
+   "note": null
+  }
  },
  {
   "name": "Dr. Hillisch Ordination",
@@ -611,7 +1442,49 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4070",
-  "city": "Eferding"
+  "city": "Eferding",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "14:00",
+      "18:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "14:00",
+      "18:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.drhillisch.at/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Richard Wimmer",
@@ -630,7 +1503,45 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5230",
-  "city": "Mattighofen"
+  "city": "Mattighofen",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:30",
+      "11:30"
+     ],
+     [
+      "15:30",
+      "18:30"
+     ]
+    ],
+    "tu": [
+     [
+      "08:30",
+      "13:30"
+     ]
+    ],
+    "we": [
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "th": [
+     [
+      "13:00",
+      "18:30"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.dermatologie-wimmer.at/",
+   "note": "Laut Website Urlaub 17.08.–06.09. und 14.–15.09.2026"
+  }
  },
  {
   "name": "Dr. Christoph Händlhuber, Wahlarzt",
@@ -649,7 +1560,8 @@
   "billing": "Privat/Wahlarzt",
   "note": null,
   "zip": "4632",
-  "city": "Pichl bei Wels"
+  "city": "Pichl bei Wels",
+  "hours": null
  },
  {
   "name": "Dr.med. Adrian Schwarz",
@@ -668,7 +1580,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94405",
-  "city": "Landau an der Isar"
+  "city": "Landau an der Isar",
+  "hours": null
  },
  {
   "name": "Dr. Schweninger Sabine - Dermatologie",
@@ -687,7 +1600,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4611",
-  "city": "Buchkirchen"
+  "city": "Buchkirchen",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "th": [
+     [
+      "16:00",
+      "20:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.dr-schweninger.at/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Martha Humer",
@@ -706,7 +1658,41 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4600",
-  "city": "Wels"
+  "city": "Wels",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "07:15",
+      "12:00"
+     ]
+    ],
+    "tu": [
+     [
+      "13:00",
+      "16:30"
+     ]
+    ],
+    "we": [
+     [
+      "13:00",
+      "16:30"
+     ]
+    ],
+    "th": [
+     [
+      "07:15",
+      "12:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.dr-humer.at/",
+   "note": "sowie nach Vereinbarung"
+  }
  },
  {
   "name": "Herr Dr. med. Uwe Schlehaider",
@@ -727,7 +1713,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84489",
-  "city": "Burghausen"
+  "city": "Burghausen",
+  "hours": null
  },
  {
   "name": "Dr. Thomas Berger, Facharzt für Haut- und Geschlechtskrankheiten, Wahlarzt",
@@ -746,7 +1733,26 @@
   "billing": "Privat/Wahlarzt",
   "note": null,
   "zip": "4690",
-  "city": "Schwanenstadt"
+  "city": "Schwanenstadt",
+  "hours": {
+   "week": {
+    "mo": [],
+    "tu": [
+     [
+      "16:30",
+      "19:30"
+     ]
+    ],
+    "we": [],
+    "th": [],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarzt.co.at/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Horst Berger",
@@ -765,7 +1771,45 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4651",
-  "city": "Stadl-Paura"
+  "city": "Stadl-Paura",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "15:00"
+     ]
+    ],
+    "we": [
+     [
+      "14:00",
+      "18:00"
+     ]
+    ],
+    "th": [],
+    "fr": [
+     [
+      "07:30",
+      "12:30"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarzt-stadlpaura.at/",
+   "note": "Do nach Vereinbarung. Terminvereinbarung generell erforderlich."
+  }
  },
  {
   "name": "Dr. Barbara Gruber",
@@ -784,7 +1828,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4600",
-  "city": "Wels"
+  "city": "Wels",
+  "hours": null
  },
  {
   "name": "DERMATOLOGIE KILBERTUS",
@@ -803,7 +1848,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4600",
-  "city": "Wels"
+  "city": "Wels",
+  "hours": null
  },
  {
   "name": "Dr. Josef Raml - Facharzt für Dermatologie",
@@ -822,7 +1868,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4600",
-  "city": "Wels"
+  "city": "Wels",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "tu": [
+     [
+      "13:30",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "th": [
+     [
+      "13:30",
+      "17:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://raml-dermatologie.at/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Walter Waldl",
@@ -841,7 +1926,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4600",
-  "city": "Wels"
+  "city": "Wels",
+  "hours": null
  },
  {
   "name": "Hautarzt Dr. Gernot Lechner",
@@ -860,7 +1946,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4600",
-  "city": "Wels"
+  "city": "Wels",
+  "hours": null
  },
  {
   "name": "Dr. Vera Reinhart",
@@ -879,7 +1966,44 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4600",
-  "city": "Wels"
+  "city": "Wels",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "13:30",
+      "15:30"
+     ]
+    ],
+    "tu": [],
+    "we": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "13:30",
+      "15:30"
+     ]
+    ],
+    "th": [],
+    "fr": [
+     [
+      "08:00",
+      "11:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://reinhart-haut.at/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Brandlmaier OG - Fachärzte für Dermatologie",
@@ -898,7 +2022,35 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4600",
-  "city": "Thalheim bei Wels"
+  "city": "Thalheim bei Wels",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "16:00",
+      "18:00"
+     ]
+    ],
+    "tu": [],
+    "we": [
+     [
+      "15:00",
+      "18:00"
+     ]
+    ],
+    "th": [],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.brandlmaier.at/",
+   "note": null
+  }
  },
  {
   "name": "Ordination Dr. Mlynek",
@@ -917,7 +2069,44 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4190",
-  "city": "Bad Leonfelden"
+  "city": "Bad Leonfelden",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "09:00",
+      "13:00"
+     ],
+     [
+      "14:00",
+      "16:30"
+     ]
+    ],
+    "tu": [
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "we": [],
+    "th": [
+     [
+      "09:00",
+      "13:00"
+     ],
+     [
+      "15:00",
+      "18:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://hautarzt-muehlviertel.at/",
+   "note": "Mi und Fr nach Vereinbarung"
+  }
  },
  {
   "name": "Dr. med. Martina Bitterlich-Fischhofer",
@@ -936,7 +2125,36 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4840",
-  "city": "Vöcklabruck"
+  "city": "Vöcklabruck",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "we": [],
+    "th": [],
+    "fr": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarzt-bitterlich.at/",
+   "note": "Termin nach Vereinbarung"
+  }
  },
  {
   "name": "Dr. Größer",
@@ -955,7 +2173,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84503",
-  "city": "Altötting"
+  "city": "Altötting",
+  "hours": null
  },
  {
   "name": "Hautärztin Dr. Katharina Fiala- Wahlärztin",
@@ -974,7 +2193,8 @@
   "billing": "Privat/Wahlarzt",
   "note": null,
   "zip": "4040",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": null
  },
  {
   "name": "Hautarzt Dingolfing Dr. Huber",
@@ -993,7 +2213,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84130",
-  "city": "Dingolfing"
+  "city": "Dingolfing",
+  "hours": null
  },
  {
   "name": "Dr. med. Karin Lindtner",
@@ -1012,7 +2233,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4040",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": null
  },
  {
   "name": "Hautärzte Urfahr - Dr. Christa Längauer & Dr. Michael Wipplinger",
@@ -1031,7 +2253,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4040",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": null
  },
  {
   "name": "Hautzentrum Attersee",
@@ -1050,7 +2273,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4861",
-  "city": "Schörfling am Attersee"
+  "city": "Schörfling am Attersee",
+  "hours": null
  },
  {
   "name": "Dr. Evelyn Durnig",
@@ -1069,7 +2293,41 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4020",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "09:00",
+      "11:00"
+     ]
+    ],
+    "tu": [
+     [
+      "09:00",
+      "11:00"
+     ]
+    ],
+    "we": [
+     [
+      "12:00",
+      "14:00"
+     ]
+    ],
+    "th": [
+     [
+      "09:00",
+      "11:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.dr-durnig.at/",
+   "note": null
+  }
  },
  {
   "name": "Hautärztin Dr. Geroldinger-Simić",
@@ -1088,7 +2346,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4020",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": null
  },
  {
   "name": "Dr. Susanne Stern",
@@ -1107,7 +2366,26 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4020",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": {
+   "week": {
+    "mo": [],
+    "tu": [],
+    "we": [
+     [
+      "14:00",
+      "18:00"
+     ]
+    ],
+    "th": [],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautstern.at/",
+   "note": "Mo 16-18h nur tel. Terminvereinbarung; sonst nach Terminvereinbarung"
+  }
  },
  {
   "name": "Dr. med. Sonja Schweighofer - Hautärztin",
@@ -1126,7 +2404,41 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4020",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "14:00"
+     ]
+    ],
+    "tu": [
+     [
+      "15:00",
+      "18:00"
+     ]
+    ],
+    "we": [],
+    "th": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarzt-schweighofer.at/",
+   "note": null
+  }
  },
  {
   "name": "Hautarzt Artur Avetisyan",
@@ -1145,7 +2457,58 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94315",
-  "city": "Straubing"
+  "city": "Straubing",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:30",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "17:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:30",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:30",
+      "12:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:30",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "17:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:30",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://hautarzt-straubing.de/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Martina Hörschläger",
@@ -1164,7 +2527,36 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4040",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "07:00",
+      "15:00"
+     ]
+    ],
+    "tu": [
+     [
+      "09:00",
+      "16:30"
+     ]
+    ],
+    "we": [],
+    "th": [
+     [
+      "07:00",
+      "15:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.teamdermatologie.at/",
+   "note": "Geänderte Zeiten von Mai-September. Termine nach tel. Vereinbarung."
+  }
  },
  {
   "name": "Dr. med. Martin Barsch, MBA - Hautarzt + Hautchirurg (Wahlarzt) - Zentrum für Lipödem Österreich",
@@ -1183,7 +2575,8 @@
   "billing": "Privat/Wahlarzt",
   "note": null,
   "zip": "4020",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": null
  },
  {
   "name": "Dr. Elisabeth Kowald",
@@ -1202,7 +2595,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4020",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": null
  },
  {
   "name": "Dr. med. univ. Daniella Winter",
@@ -1221,7 +2615,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4020",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": null
  },
  {
   "name": "Dr.med. Ulrich Caroli",
@@ -1240,7 +2635,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94315",
-  "city": "Straubing"
+  "city": "Straubing",
+  "hours": null
  },
  {
   "name": "Praxis für Dermatologie Traun",
@@ -1259,7 +2655,41 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4050",
-  "city": "Traun"
+  "city": "Traun",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "12:00",
+      "17:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "we": [
+     [
+      "12:00",
+      "17:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.drkrenmayr.at/",
+   "note": null
+  }
  },
  {
   "name": "Hautärzte Dr. Armann",
@@ -1278,7 +2708,41 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94315",
-  "city": "Straubing"
+  "city": "Straubing",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "tu": [
+     [
+      "13:00",
+      "18:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "th": [
+     [
+      "13:00",
+      "18:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.hautarzt-dr-armann.de/",
+   "note": "Fr. nach Vereinbarung"
+  }
  },
  {
   "name": "Ordination Dr. Beatrice Eder",
@@ -1297,7 +2761,41 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4642",
-  "city": "Sattledt"
+  "city": "Sattledt",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "we": [],
+    "th": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.derma-eder.at/",
+   "note": null
+  }
  },
  {
   "name": "Dr. med. Constanze Schumann",
@@ -1316,7 +2814,49 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "94315",
-  "city": "Straubing"
+  "city": "Straubing",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "09:00",
+      "15:00"
+     ]
+    ],
+    "tu": [
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "16:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "th": [
+     [
+      "09:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "17:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.hautarztpraxis-straubing.de/",
+   "note": "Fr nach Vereinbarung"
+  }
  },
  {
   "name": "Dr. Martina Schütz-Bergmayr",
@@ -1335,7 +2875,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4020",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "12:00",
+      "17:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:30",
+      "13:30"
+     ]
+    ],
+    "we": [
+     [
+      "12:00",
+      "17:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:30",
+      "13:30"
+     ]
+    ],
+    "fr": [
+     [
+      "08:30",
+      "13:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.dermatologie-linz.at/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Kaisergruber & Dr. Lackner - Fachärztliche Ordination für Hauterkrankungen und Venerologie",
@@ -1354,7 +2933,46 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4030",
-  "city": "Linz"
+  "city": "Linz",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "12:00",
+      "19:00"
+     ]
+    ],
+    "tu": [
+     [
+      "07:30",
+      "14:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "14:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "fr": [
+     [
+      "07:30",
+      "12:30"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarztlinz.at/",
+   "note": null
+  }
  },
  {
   "name": "Praxis Dr. med. univ. Attila Stephan Antal",
@@ -1373,7 +2991,49 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84453",
-  "city": "Mühldorf am Inn"
+  "city": "Mühldorf am Inn",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "14:00",
+      "18:00"
+     ]
+    ],
+    "tu": [],
+    "we": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "14:00",
+      "18:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "13:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.dermatologie-muehldorf.de/",
+   "note": "Dienstag nur Notfallsprechstunde, persönliche Anmeldung um 8 Uhr, keine Endzeit angegeben"
+  }
  },
  {
   "name": "Dr. Michael Thomas",
@@ -1392,7 +3052,57 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5110",
-  "city": "Oberndorf bei Salzburg"
+  "city": "Oberndorf bei Salzburg",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "09:30",
+      "13:00"
+     ],
+     [
+      "13:30",
+      "16:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:15",
+      "13:00"
+     ],
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:15",
+      "13:00"
+     ],
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "th": [
+     [
+      "09:30",
+      "13:00"
+     ],
+     [
+      "13:30",
+      "16:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "OpenStreetMap",
+   "source_url": null,
+   "note": null
+  }
  },
  {
   "name": "Herr Dr. med. Peter Brandl",
@@ -1411,7 +3121,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84137",
-  "city": "Vilsbiburg"
+  "city": "Vilsbiburg",
+  "hours": null
  },
  {
   "name": "Hautärztin Freistadt - Dr. Elisabeth Jülg",
@@ -1430,7 +3141,50 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4240",
-  "city": "Freistadt"
+  "city": "Freistadt",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "11:00",
+      "15:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "we": [
+     [
+      "10:00",
+      "12:00"
+     ],
+     [
+      "13:15",
+      "16:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "11:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://dermatologie-freistadt.at/",
+   "note": null
+  }
  },
  {
   "name": "Dr. Peter Preinfalk",
@@ -1449,7 +3203,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4240",
-  "city": "Freistadt"
+  "city": "Freistadt",
+  "hours": null
  },
  {
   "name": "Dr. med. Michele Deutsch",
@@ -1468,7 +3223,45 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4540",
-  "city": "Bad Hall"
+  "city": "Bad Hall",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:30",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "16:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "we": [
+     [
+      "13:00",
+      "18:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.dr-deutsch.at/",
+   "note": "Sowie nach Vereinbarung"
+  }
  },
  {
   "name": "Dr. Helga Perner",
@@ -1487,7 +3280,31 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5020",
-  "city": "Salzburg"
+  "city": "Salzburg",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "tu": [
+     [
+      "14:00",
+      "16:00"
+     ]
+    ],
+    "we": [],
+    "th": [],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.helgaperner.at/praxis",
+   "note": null
+  }
  },
  {
   "name": "Hautärzte Linzer Gasse",
@@ -1506,7 +3323,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5020",
-  "city": "Salzburg"
+  "city": "Salzburg",
+  "hours": null
  },
  {
   "name": "Dr. Michael Sigmund- Hautarzt, Hautchirurg sowie ästhetische Dermatologie und Laserzentrum-Wahlarzt",
@@ -1525,7 +3343,8 @@
   "billing": "Privat/Wahlarzt",
   "note": null,
   "zip": "5020",
-  "city": "Salzburg"
+  "city": "Salzburg",
+  "hours": null
  },
  {
   "name": "Dr. Michael Bolzer",
@@ -1546,7 +3365,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5026",
-  "city": "Salzburg"
+  "city": "Salzburg",
+  "hours": null
  },
  {
   "name": "Die Hautärzte - Dr. Bernhard Strohmeier & Dr. Magdalena Fischer",
@@ -1565,7 +3385,35 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5020",
-  "city": "Salzburg"
+  "city": "Salzburg",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "15:00",
+      "20:00"
+     ]
+    ],
+    "tu": [],
+    "we": [
+     [
+      "07:00",
+      "12:00"
+     ],
+     [
+      "14:00",
+      "19:00"
+     ]
+    ],
+    "th": [],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.diehautaerzte.co.at/",
+   "note": null
+  }
  },
  {
   "name": "Ordination Dr. Illmer",
@@ -1584,7 +3432,54 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5020",
-  "city": "Salzburg"
+  "city": "Salzburg",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "07:30",
+      "13:30"
+     ]
+    ],
+    "tu": [
+     [
+      "10:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "16:00"
+     ]
+    ],
+    "we": [
+     [
+      "07:30",
+      "12:30"
+     ]
+    ],
+    "th": [
+     [
+      "10:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "16:00"
+     ]
+    ],
+    "fr": [
+     [
+      "07:30",
+      "10:30"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarzt-illmer.at/",
+   "note": null
+  }
  },
  {
   "name": "Hautärztin Dr. Alice Jansky - Fachärztin für Dermatologie",
@@ -1603,7 +3498,62 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5020",
-  "city": "Salzburg"
+  "city": "Salzburg",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "17:00"
+     ]
+    ],
+    "tu": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "16:00"
+     ]
+    ],
+    "we": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "16:00"
+     ]
+    ],
+    "th": [
+     [
+      "08:00",
+      "12:00"
+     ],
+     [
+      "13:00",
+      "16:00"
+     ]
+    ],
+    "fr": [
+     [
+      "08:00",
+      "12:00"
+     ]
+    ],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.dr-jansky.at/dermatologie/?utm_source=google&utm_medium=gmb",
+   "note": null
+  }
  },
  {
   "name": "Hautarzt Dr. Michael Mandl",
@@ -1622,7 +3572,45 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "5020",
-  "city": "Salzburg"
+  "city": "Salzburg",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "10:00",
+      "15:00"
+     ]
+    ],
+    "tu": [
+     [
+      "09:00",
+      "13:00"
+     ],
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "we": [
+     [
+      "14:00",
+      "17:00"
+     ]
+    ],
+    "th": [
+     [
+      "09:00",
+      "13:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "http://www.hautarzt-mandl.at/",
+   "note": null
+  }
  },
  {
   "name": "Dermatologie Dr. Ludolph-Hauser",
@@ -1641,7 +3629,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84030",
-  "city": "Ergolding"
+  "city": "Ergolding",
+  "hours": null
  },
  {
   "name": "HAUT MVZ DR. HUBER",
@@ -1663,7 +3652,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84028",
-  "city": "Landshut"
+  "city": "Landshut",
+  "hours": null
  },
  {
   "name": "Frau Dr. med. Katrin Krause",
@@ -1684,7 +3674,8 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "84036",
-  "city": "Landshut"
+  "city": "Landshut",
+  "hours": null
  },
  {
   "name": "Dr. med. univ. Klaus Enzelsberger",
@@ -1703,7 +3694,45 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "4400",
-  "city": "Steyr"
+  "city": "Steyr",
+  "hours": {
+   "week": {
+    "mo": [
+     [
+      "07:30",
+      "13:00"
+     ]
+    ],
+    "tu": [
+     [
+      "07:30",
+      "11:30"
+     ],
+     [
+      "13:00",
+      "16:00"
+     ]
+    ],
+    "we": [
+     [
+      "07:30",
+      "13:00"
+     ]
+    ],
+    "th": [
+     [
+      "14:00",
+      "18:00"
+     ]
+    ],
+    "fr": [],
+    "sa": [],
+    "su": []
+   },
+   "source": "Website",
+   "source_url": "https://www.hautarzt-enzelsberger.at/",
+   "note": null
+  }
  },
  {
   "name": "MVZ Traunstein",
@@ -1722,6 +3751,7 @@
   "billing": "unbekannt",
   "note": null,
   "zip": "83278",
-  "city": "Traunstein"
+  "city": "Traunstein",
+  "hours": null
  }
 ]
