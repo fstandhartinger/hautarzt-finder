@@ -69,6 +69,7 @@
     background:var(--panel2); border:1px solid var(--line); border-radius:8px;
     padding:6px 10px; cursor:pointer; white-space:nowrap;
   }
+  header a.hbtn{text-decoration:none}
   .hbtn:hover{border-color:var(--accent)}
   .hbtn.on{background:var(--accent2); border-color:var(--accent2); color:#04202e; font-weight:600}
 
@@ -204,7 +205,8 @@
 <div id="gate">
   <form id="gateForm" autocomplete="off" novalidate>
     <h1>🩺 Hautarzt-Finder Passau</h1>
-    <p>Bitte Passwort eingeben. Es wird danach dauerhaft im Browser gespeichert.</p>
+    <p>Bitte Passwort eingeben. Es wird danach dauerhaft im Browser gespeichert.<br>
+      <a href="/privacy.html">Datenschutzhinweise</a></p>
     <!-- Deliberately NOT <input type="password">. Every Sandy PaaS app lives under
          mintapis.com, so Chrome's password manager treats a login saved for one app
          as a match for all the others and offers it here. This gate has no account
@@ -228,6 +230,7 @@
     <h1>🩺 Hautarzt-Finder <span>Passau &amp; Umgebung</span></h1>
     <span id="stats"></span>
     <span class="grow"></span>
+    <a class="hbtn" href="/privacy.html">Datenschutz</a>
     <button class="hbtn" id="toggleMap" title="Karte ein-/ausblenden">🗺️</button>
     <button class="hbtn" id="toggleList" title="Liste ein-/ausblenden">📋</button>
   </header>
@@ -331,6 +334,7 @@
 <div id="saveHint"></div>
 
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.js"></script>
+<script defer src="/analytics.js"></script>
 <script src="/app.js"></script>
 </body>
 </html>
