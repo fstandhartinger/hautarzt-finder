@@ -22,4 +22,7 @@ EXPOSE 8080
 HEALTHCHECK --interval=15s --timeout=5s --start-period=40s --retries=5 \
   CMD curl -fsS http://127.0.0.1:8080/healthz || exit 1
 
-CMD ["node", "server.js"]
+# Structured JSON logs + request ids (logging standard, AGENTS.md; logkit/README.md). No IPs or user agents.
+COPY logkit ./logkit
+ENV LOG_APP=hautarzt-finder LOG_IP=0 LOG_UA=0
+CMD ["node", "-r", "./logkit/logkit-preload.cjs", "server.js"]
